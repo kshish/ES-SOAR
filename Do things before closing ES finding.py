@@ -226,7 +226,40 @@ def add_finding_or_investigation_note_3(action=None, success=None, container=Non
     ## Custom Code End
     ################################################################################
 
-    phantom.act("add finding or investigation note", parameters=parameters, name="add_finding_or_investigation_note_3", assets=["builtin_mc_connector"])
+    phantom.act("add finding or investigation note", parameters=parameters, name="add_finding_or_investigation_note_3", assets=["builtin_mc_connector"], callback=close_finding)
+
+    return
+
+
+@phantom.playbook_block()
+def close_finding(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("close_finding() called")
+
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
+
+    finding_data = phantom.collect2(container=container, datapath=["finding:finding_id"])
+
+    parameters = []
+
+    # build parameters list for 'close_finding' call
+    for finding_data_item in finding_data:
+        if finding_data_item[0] is not None:
+            parameters.append({
+                "status": "Closed",
+                "id": finding_data_item[0],
+            })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.act("update finding or investigation", parameters=parameters, name="close_finding", assets=["builtin_mc_connector"])
 
     return
 

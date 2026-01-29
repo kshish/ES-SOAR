@@ -68,14 +68,21 @@
                     "targetPort": "7_in"
                 },
                 {
-                    "id": "port_7_to_port_1",
+                    "id": "port_7_to_port_8",
                     "sourceNode": "7",
                     "sourcePort": "7_out",
+                    "targetNode": "8",
+                    "targetPort": "8_in"
+                },
+                {
+                    "id": "port_8_to_port_1",
+                    "sourceNode": "8",
+                    "sourcePort": "8_out",
                     "targetNode": "1",
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "49c1c2b7fbb018836f05d7c88d9ecb2935e5e7f0",
+            "hash": "a6109f3086ebb73463b6f5ad57633864fe949232",
             "nodes": {
                 "0": {
                     "data": {
@@ -107,7 +114,7 @@
                     "type": "end",
                     "warnings": {},
                     "x": 1000,
-                    "y": 1360
+                    "y": 1460
                 },
                 "2": {
                     "data": {
@@ -503,6 +510,52 @@
                     "warnings": {},
                     "x": 980,
                     "y": 1204.5
+                },
+                "8": {
+                    "data": {
+                        "action": "update finding or investigation",
+                        "actionType": "post",
+                        "advanced": {
+                            "customName": "close finding",
+                            "customNameId": 0,
+                            "join": []
+                        },
+                        "connector": "Enterprise Security",
+                        "connectorConfigs": [
+                            "builtin_mc_connector"
+                        ],
+                        "connectorId": "7e971d03-6ae7-4429-b4e1-cf461003e75b",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "close_finding",
+                        "id": "8",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "id": "finding:finding_id",
+                            "status": "Closed"
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "string",
+                                "field": "id"
+                            }
+                        ],
+                        "type": "enterpriseSecurity"
+                    },
+                    "errors": {},
+                    "id": "8",
+                    "type": "enterpriseSecurity",
+                    "warnings": {},
+                    "x": 980,
+                    "y": 1360
                 }
             },
             "notes": ""
@@ -515,7 +568,7 @@
         "schema": "5.0.20",
         "version": "6.4.1.361"
     },
-    "create_time": "2026-01-29T05:10:07.884470+00:00",
+    "create_time": "2026-01-29T05:13:33.190979+00:00",
     "draft_mode": false,
     "labels": [
         "es_soar_integration"
