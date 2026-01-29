@@ -60,8 +60,8 @@ def prompt_for_finding_owner(action=None, success=None, container=None, results=
 
     # set approver and message variables for phantom.prompt call
 
-    user = None
-    role = "Administrator"
+    user = phantom.collect2(container=container, datapath=["playbook:launching_user.name"])[0][0]
+    role = None
     message = """About to close finding."""
 
     # parameter list for template variable replacement
@@ -165,8 +165,8 @@ def prompt_for_final_note(action=None, success=None, container=None, results=Non
 
     # set approver and message variables for phantom.prompt call
 
-    user = None
-    role = "Administrator"
+    user = phantom.collect2(container=container, datapath=["playbook:launching_user.name"])[0][0]
+    role = None
     message = """Closing a Finding requires a final note"""
 
     # parameter list for template variable replacement
