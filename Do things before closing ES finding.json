@@ -21,53 +21,6 @@
                     "targetPort": "5_in"
                 },
                 {
-                    "conditions": [
-                        {
-                            "conditionKey": "condition_key_0",
-                            "index": 0
-                        }
-                    ],
-                    "id": "port_4_to_port_3",
-                    "sourceNode": "4",
-                    "sourcePort": "4_out",
-                    "targetNode": "3",
-                    "targetPort": "3_in"
-                },
-                {
-                    "id": "port_3_to_port_2",
-                    "sourceNode": "3",
-                    "sourcePort": "3_out",
-                    "targetNode": "2",
-                    "targetPort": "2_in"
-                },
-                {
-                    "id": "port_2_to_port_6",
-                    "sourceNode": "2",
-                    "sourcePort": "2_out",
-                    "targetNode": "6",
-                    "targetPort": "6_in"
-                },
-                {
-                    "conditions": [
-                        {
-                            "conditionKey": "condition_key_5",
-                            "index": 1
-                        }
-                    ],
-                    "id": "port_4_to_port_6",
-                    "sourceNode": "4",
-                    "sourcePort": "4_out",
-                    "targetNode": "6",
-                    "targetPort": "6_in"
-                },
-                {
-                    "id": "port_6_to_port_7",
-                    "sourceNode": "6",
-                    "sourcePort": "6_out",
-                    "targetNode": "7",
-                    "targetPort": "7_in"
-                },
-                {
                     "id": "port_7_to_port_8",
                     "sourceNode": "7",
                     "sourcePort": "7_out",
@@ -94,9 +47,42 @@
                     "sourcePort": "10_out",
                     "targetNode": "11",
                     "targetPort": "11_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "conditionKey": "condition_key_0",
+                            "index": 0
+                        }
+                    ],
+                    "id": "port_4_to_port_2",
+                    "sourceNode": "4",
+                    "sourcePort": "4_out",
+                    "targetNode": "2",
+                    "targetPort": "2_in"
+                },
+                {
+                    "conditions": [
+                        {
+                            "conditionKey": "condition_key_5",
+                            "index": 1
+                        }
+                    ],
+                    "id": "port_4_to_port_7",
+                    "sourceNode": "4",
+                    "sourcePort": "4_out",
+                    "targetNode": "7",
+                    "targetPort": "7_in"
+                },
+                {
+                    "id": "port_2_to_port_7",
+                    "sourceNode": "2",
+                    "sourcePort": "2_out",
+                    "targetNode": "7",
+                    "targetPort": "7_in"
                 }
             ],
-            "hash": "85711aa546eb34e4f7e4541fa6f0d17ab386a7a6",
+            "hash": "57d7e087c1d4dfa1396f3967d68f9e4622042a8b",
             "nodes": {
                 "0": {
                     "data": {
@@ -112,7 +98,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 420
+                    "y": 419.9999999999999
                 },
                 "1": {
                     "data": {
@@ -265,7 +251,7 @@
                         },
                         "parameters": {
                             "id": "finding:finding_id",
-                            "owner": "prompt_for_finding_owner:action_result.summary.responses.0"
+                            "owner": "admin"
                         },
                         "requiredParameters": [
                             {
@@ -279,8 +265,8 @@
                     "id": "2",
                     "type": "enterpriseSecurity",
                     "warnings": {},
-                    "x": 1160,
-                    "y": 860
+                    "x": 1240,
+                    "y": 760
                 },
                 "3": {
                     "data": {
@@ -315,8 +301,12 @@
                     "errors": {},
                     "id": "3",
                     "type": "prompt",
-                    "warnings": {},
-                    "x": 1160,
+                    "warnings": {
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
+                    "x": 1440,
                     "y": 740
                 },
                 "4": {
@@ -584,9 +574,13 @@
                     "errors": {},
                     "id": "6",
                     "type": "prompt",
-                    "warnings": {},
-                    "x": 980,
-                    "y": 1060
+                    "warnings": {
+                        "context": [
+                            "Connect block to playbook flow."
+                        ]
+                    },
+                    "x": 760,
+                    "y": 1040
                 },
                 "7": {
                     "data": {
@@ -614,9 +608,9 @@
                             "pauseValue": 2
                         },
                         "parameters": {
-                            "content": "prompt_for_final_note:action_result.summary.responses.1",
+                            "content": "this is the final note content set by pb",
                             "id": "finding:finding_id",
-                            "title": "prompt_for_final_note:action_result.summary.responses.0"
+                            "title": "Final Note"
                         },
                         "requiredParameters": [
                             {
@@ -692,10 +686,10 @@
         "playbook_trigger": "artifact_created",
         "playbook_type": "es",
         "python_version": "3.9",
-        "schema": "5.0.20",
-        "version": "6.4.1.361"
+        "schema": "5.0.22",
+        "version": "7.1.0.99"
     },
-    "create_time": "2026-01-30T08:25:28.515564+00:00",
+    "create_time": "2026-01-30T15:40:23.990723+00:00",
     "draft_mode": false,
     "labels": [
         "es_soar_integration"

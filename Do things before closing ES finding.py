@@ -28,18 +28,16 @@ def update_finding_or_investigation_1(action=None, success=None, container=None,
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
     finding_data = phantom.collect2(container=container, datapath=["finding:finding_id"])
-    prompt_for_finding_owner_result_data = phantom.collect2(container=container, datapath=["prompt_for_finding_owner:action_result.summary.responses.0","prompt_for_finding_owner:action_result.parameter.context.artifact_id"], action_results=results)
 
     parameters = []
 
     # build parameters list for 'update_finding_or_investigation_1' call
     for finding_data_item in finding_data:
-        for prompt_for_finding_owner_result_item in prompt_for_finding_owner_result_data:
-            if finding_data_item[0] is not None:
-                parameters.append({
-                    "id": finding_data_item[0],
-                    "owner": prompt_for_finding_owner_result_item[0],
-                })
+        if finding_data_item[0] is not None:
+            parameters.append({
+                "id": finding_data_item[0],
+                "owner": "admin",
+            })
 
     ################################################################################
     ## Custom Code Start
@@ -51,7 +49,7 @@ def update_finding_or_investigation_1(action=None, success=None, container=None,
     ## Custom Code End
     ################################################################################
 
-    phantom.act("update finding or investigation", parameters=parameters, name="update_finding_or_investigation_1", assets=["builtin_mc_connector"], callback=join_prompt_for_final_note)
+    phantom.act("update finding or investigation", parameters=parameters, name="update_finding_or_investigation_1", assets=["builtin_mc_connector"], callback=join_add_finding_or_investigation_note_3)
 
     return
 
@@ -80,7 +78,7 @@ def prompt_for_finding_owner(action=None, success=None, container=None, results=
         }
     ]
 
-    phantom.prompt2(container=container, user=user, role=role, message=message, respond_in_mins=30, name="prompt_for_finding_owner", parameters=parameters, response_types=response_types, callback=update_finding_or_investigation_1)
+    phantom.prompt2(container=container, user=user, role=role, message=message, respond_in_mins=30, name="prompt_for_finding_owner", parameters=parameters, response_types=response_types)
 
     return
 
@@ -103,11 +101,11 @@ def decision_1(action=None, success=None, container=None, results=None, handle=N
 
     # call connected blocks if condition 1 matched
     if found_match_1:
-        prompt_for_finding_owner(action=action, success=success, container=container, results=results, handle=handle)
+        update_finding_or_investigation_1(action=action, success=success, container=container, results=results, handle=handle)
         return
 
     # check for 'else' condition 2
-    join_prompt_for_final_note(action=action, success=success, container=container, results=results, handle=handle)
+    join_add_finding_or_investigation_note_3(action=action, success=success, container=container, results=results, handle=handle)
 
     return
 
@@ -151,17 +149,6 @@ def debug_1(action=None, success=None, container=None, results=None, handle=None
 
 
 @phantom.playbook_block()
-def join_prompt_for_final_note(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
-    phantom.debug("join_prompt_for_final_note() called")
-
-    if phantom.completed(action_names=["update_finding_or_investigation_1"]):
-        # call connected block "prompt_for_final_note"
-        prompt_for_final_note(container=container, handle=handle)
-
-    return
-
-
-@phantom.playbook_block()
 def prompt_for_final_note(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
     phantom.debug("prompt_for_final_note() called")
 
@@ -192,7 +179,18 @@ def prompt_for_final_note(action=None, success=None, container=None, results=Non
         }
     ]
 
-    phantom.prompt2(container=container, user=user, role=role, message=message, respond_in_mins=30, name="prompt_for_final_note", parameters=parameters, response_types=response_types, callback=add_finding_or_investigation_note_3)
+    phantom.prompt2(container=container, user=user, role=role, message=message, respond_in_mins=30, name="prompt_for_final_note", parameters=parameters, response_types=response_types)
+
+    return
+
+
+@phantom.playbook_block()
+def join_add_finding_or_investigation_note_3(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("join_add_finding_or_investigation_note_3() called")
+
+    if phantom.completed(action_names=["update_finding_or_investigation_1"]):
+        # call connected block "add_finding_or_investigation_note_3"
+        add_finding_or_investigation_note_3(container=container, handle=handle)
 
     return
 
@@ -204,19 +202,17 @@ def add_finding_or_investigation_note_3(action=None, success=None, container=Non
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
     finding_data = phantom.collect2(container=container, datapath=["finding:finding_id"])
-    prompt_for_final_note_result_data = phantom.collect2(container=container, datapath=["prompt_for_final_note:action_result.summary.responses.0","prompt_for_final_note:action_result.summary.responses.1","prompt_for_final_note:action_result.parameter.context.artifact_id"], action_results=results)
 
     parameters = []
 
     # build parameters list for 'add_finding_or_investigation_note_3' call
     for finding_data_item in finding_data:
-        for prompt_for_final_note_result_item in prompt_for_final_note_result_data:
-            if finding_data_item[0] is not None and prompt_for_final_note_result_item[1] is not None:
-                parameters.append({
-                    "id": finding_data_item[0],
-                    "title": prompt_for_final_note_result_item[0],
-                    "content": prompt_for_final_note_result_item[1],
-                })
+        if finding_data_item[0] is not None:
+            parameters.append({
+                "id": finding_data_item[0],
+                "title": "Final Note",
+                "content": "this is the final note content set by pb",
+            })
 
     ################################################################################
     ## Custom Code Start
@@ -280,10 +276,10 @@ def set_custom_fields_1(action=None, success=None, container=None, results=None,
     for finding_data_item in finding_data:
         if finding_data_item[0] is not None:
             parameters.append({
-                "incident_id": finding_data_item[0],
                 "pairs": [
                     { "name": "Department", "value": "HR" },
                 ],
+                "incident_id": finding_data_item[0],
             })
 
     ################################################################################
@@ -315,10 +311,10 @@ def set_custom_fields_2(action=None, success=None, container=None, results=None,
     for finding_data_item in finding_data:
         if finding_data_item[0] is not None:
             parameters.append({
-                "incident_id": finding_data_item[0],
                 "pairs": [
                     { "name": "Own_Risk_Score", "value": "high" },
                 ],
+                "incident_id": finding_data_item[0],
             })
 
     ################################################################################
