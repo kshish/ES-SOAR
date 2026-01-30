@@ -80,9 +80,16 @@
                     "sourcePort": "8_out",
                     "targetNode": "1",
                     "targetPort": "1_in"
+                },
+                {
+                    "id": "port_0_to_port_10",
+                    "sourceNode": "0",
+                    "sourcePort": "0_out",
+                    "targetNode": "10",
+                    "targetPort": "10_in"
                 }
             ],
-            "hash": "fef5d899b24f2cdfa744fc82f35ff57b0633a3cb",
+            "hash": "5629ba8db9e320ecb22d086b2ec46b8af30b29e0",
             "nodes": {
                 "0": {
                     "data": {
@@ -115,6 +122,60 @@
                     "warnings": {},
                     "x": 1000,
                     "y": 1460
+                },
+                "10": {
+                    "data": {
+                        "action": "set custom fields",
+                        "actionType": "post",
+                        "advanced": {
+                            "join": []
+                        },
+                        "connector": "Enterprise Security",
+                        "connectorConfigs": [
+                            "builtin_mc_connector"
+                        ],
+                        "connectorId": "7e971d03-6ae7-4429-b4e1-cf461003e75b",
+                        "connectorVersion": "v1",
+                        "functionId": 1,
+                        "functionName": "set_custom_fields_1",
+                        "id": "10",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "incident_id": "finding:finding_id",
+                            "pairs": [
+                                {
+                                    "name": "Department",
+                                    "value": "HR"
+                                }
+                            ]
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "array",
+                                "field": "pairs"
+                            },
+                            {
+                                "data_type": "string",
+                                "default": "",
+                                "field": "incident_id"
+                            }
+                        ],
+                        "type": "enterpriseSecurity"
+                    },
+                    "errors": {},
+                    "id": "10",
+                    "type": "enterpriseSecurity",
+                    "warnings": {},
+                    "x": 790,
+                    "y": 564.5
                 },
                 "2": {
                     "data": {
@@ -572,7 +633,7 @@
         "schema": "5.0.20",
         "version": "6.4.1.361"
     },
-    "create_time": "2026-01-30T08:12:32.400783+00:00",
+    "create_time": "2026-01-30T08:15:51.676167+00:00",
     "draft_mode": false,
     "labels": [
         "es_soar_integration"

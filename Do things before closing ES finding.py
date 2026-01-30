@@ -16,6 +16,8 @@ def on_start(container):
     decision_1(container=container)
     # call 'debug_1' block
     debug_1(container=container)
+    # call 'set_custom_fields_1' block
+    set_custom_fields_1(container=container)
 
     return
 
@@ -260,6 +262,41 @@ def close_finding(action=None, success=None, container=None, results=None, handl
     ################################################################################
 
     phantom.act("update finding or investigation", parameters=parameters, name="close_finding", assets=["builtin_mc_connector"])
+
+    return
+
+
+@phantom.playbook_block()
+def set_custom_fields_1(action=None, success=None, container=None, results=None, handle=None, filtered_artifacts=None, filtered_results=None, custom_function=None, loop_state_json=None, **kwargs):
+    phantom.debug("set_custom_fields_1() called")
+
+    # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
+
+    finding_data = phantom.collect2(container=container, datapath=["finding:finding_id"])
+
+    parameters = []
+
+    # build parameters list for 'set_custom_fields_1' call
+    for finding_data_item in finding_data:
+        if finding_data_item[0] is not None:
+            parameters.append({
+                "incident_id": finding_data_item[0],
+                "pairs": [
+                    { "name": "Department", "value": "HR" },
+                ],
+            })
+
+    ################################################################################
+    ## Custom Code Start
+    ################################################################################
+
+    # Write your custom code here...
+
+    ################################################################################
+    ## Custom Code End
+    ################################################################################
+
+    phantom.act("set custom fields", parameters=parameters, name="set_custom_fields_1", assets=["builtin_mc_connector"])
 
     return
 
