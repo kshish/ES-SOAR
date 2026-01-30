@@ -14,7 +14,7 @@
                     "targetPort": "2_in"
                 }
             ],
-            "hash": "21835d0b104534e73513efb14e384f30b3d4f676",
+            "hash": "5ad0c150cdefc181f7eead8da453f9dce088f1e9",
             "nodes": {
                 "0": {
                     "data": {
@@ -75,7 +75,7 @@
                         },
                         "parameters": {
                             "id": "finding:finding_ids",
-                            "status": "Closed"
+                            "status": "4"
                         },
                         "requiredParameters": [
                             {
@@ -103,7 +103,7 @@
         "schema": "5.0.22",
         "version": "7.1.0.99"
     },
-    "create_time": "2026-01-30T16:59:41.292255+00:00",
+    "create_time": "2026-01-30T17:00:32.153647+00:00",
     "draft_mode": false,
     "labels": [
         "es_soar_integration"

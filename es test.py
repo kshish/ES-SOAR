@@ -32,7 +32,7 @@ def update_finding_or_investigation_1(action=None, success=None, container=None,
         if finding_data_item[0] is not None:
             parameters.append({
                 "id": finding_data_item[0],
-                "status": "Closed",
+                "status": 4,
             })
 
     ################################################################################
