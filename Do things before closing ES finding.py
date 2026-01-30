@@ -93,10 +93,10 @@ def decision_1(action=None, success=None, container=None, results=None, handle=N
     found_match_1 = phantom.decision(
         container=container,
         conditions=[
-            ["finding:owner", "is None"]
+            ["finding:owner", "==", None]
         ],
         conditions_dps=[
-            ["finding:owner", "is None"]
+            ["finding:owner", "==", None]
         ],
         name="decision_1:condition_1",
         delimiter=None)

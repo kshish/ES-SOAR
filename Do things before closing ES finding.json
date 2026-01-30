@@ -96,7 +96,7 @@
                     "targetPort": "11_in"
                 }
             ],
-            "hash": "88905f5e15570b9ddd45b33974ed3049d9b4d3eb",
+            "hash": "85711aa546eb34e4f7e4541fa6f0d17ab386a7a6",
             "nodes": {
                 "0": {
                     "data": {
@@ -329,8 +329,9 @@
                                 "comparisons": [
                                     {
                                         "conditionIndex": 0,
-                                        "op": "is None",
-                                        "param": "finding:owner"
+                                        "op": "==",
+                                        "param": "finding:owner",
+                                        "value": "None"
                                     }
                                 ],
                                 "conditionIndex": 0,
@@ -694,7 +695,7 @@
         "schema": "5.0.20",
         "version": "6.4.1.361"
     },
-    "create_time": "2026-01-30T08:18:39.003379+00:00",
+    "create_time": "2026-01-30T08:25:28.515564+00:00",
     "draft_mode": false,
     "labels": [
         "es_soar_integration"
