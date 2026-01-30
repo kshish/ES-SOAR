@@ -91,10 +91,10 @@ def decision_1(action=None, success=None, container=None, results=None, handle=N
     found_match_1 = phantom.decision(
         container=container,
         conditions=[
-            ["finding:owner", "==", None]
+            ["finding:owner", "is None"]
         ],
         conditions_dps=[
-            ["finding:owner", "==", None]
+            ["finding:owner", "is None"]
         ],
         name="decision_1:condition_1",
         delimiter=None)
@@ -245,8 +245,8 @@ def close_finding(action=None, success=None, container=None, results=None, handl
     for finding_data_item in finding_data:
         if finding_data_item[0] is not None:
             parameters.append({
-                "status": "Closed",
                 "id": finding_data_item[0],
+                "status": "Closed",
             })
 
     ################################################################################

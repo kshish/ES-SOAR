@@ -82,7 +82,7 @@
                     "targetPort": "1_in"
                 }
             ],
-            "hash": "bd69c038f6ea6099532cb51c447b7c156d1ca38b",
+            "hash": "fef5d899b24f2cdfa744fc82f35ff57b0633a3cb",
             "nodes": {
                 "0": {
                     "data": {
@@ -98,7 +98,7 @@
                     "type": "start",
                     "warnings": {},
                     "x": 1000,
-                    "y": 419.9999999999998
+                    "y": 420
                 },
                 "1": {
                     "data": {
@@ -173,8 +173,10 @@
                         },
                         "functionId": 1,
                         "functionName": "prompt_for_finding_owner",
+                        "hasExternalApprover": false,
                         "id": "3",
                         "message": "About to close finding.",
+                        "nestedNodeChildren": [],
                         "parameters": [],
                         "responseTime": 30,
                         "responses": [
@@ -184,6 +186,8 @@
                                 "responseType": "message"
                             }
                         ],
+                        "samlEnabled": false,
+                        "samlGroupsAllowed": [],
                         "type": "prompt"
                     },
                     "errors": {},
@@ -203,9 +207,8 @@
                                 "comparisons": [
                                     {
                                         "conditionIndex": 0,
-                                        "op": "==",
-                                        "param": "finding:owner",
-                                        "value": "None"
+                                        "op": "is None",
+                                        "param": "finding:owner"
                                     }
                                 ],
                                 "conditionIndex": 0,
@@ -218,6 +221,7 @@
                             {
                                 "comparisons": [
                                     {
+                                        "conditionIndex": 1,
                                         "op": "==",
                                         "param": "",
                                         "value": ""
@@ -241,7 +245,7 @@
                     "type": "decision",
                     "warnings": {},
                     "x": 1060,
-                    "y": 544.5
+                    "y": 540
                 },
                 "5": {
                     "data": {
@@ -568,7 +572,7 @@
         "schema": "5.0.20",
         "version": "6.4.1.361"
     },
-    "create_time": "2026-01-29T05:37:26.527283+00:00",
+    "create_time": "2026-01-30T08:12:32.400783+00:00",
     "draft_mode": false,
     "labels": [
         "es_soar_integration"
