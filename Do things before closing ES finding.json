@@ -87,9 +87,16 @@
                     "sourcePort": "0_out",
                     "targetNode": "10",
                     "targetPort": "10_in"
+                },
+                {
+                    "id": "port_10_to_port_11",
+                    "sourceNode": "10",
+                    "sourcePort": "10_out",
+                    "targetNode": "11",
+                    "targetPort": "11_in"
                 }
             ],
-            "hash": "5629ba8db9e320ecb22d086b2ec46b8af30b29e0",
+            "hash": "88905f5e15570b9ddd45b33974ed3049d9b4d3eb",
             "nodes": {
                 "0": {
                     "data": {
@@ -176,6 +183,60 @@
                     "warnings": {},
                     "x": 790,
                     "y": 564.5
+                },
+                "11": {
+                    "data": {
+                        "action": "set custom fields",
+                        "actionType": "post",
+                        "advanced": {
+                            "join": []
+                        },
+                        "connector": "Enterprise Security",
+                        "connectorConfigs": [
+                            "builtin_mc_connector"
+                        ],
+                        "connectorId": "7e971d03-6ae7-4429-b4e1-cf461003e75b",
+                        "connectorVersion": "v1",
+                        "functionId": 2,
+                        "functionName": "set_custom_fields_2",
+                        "id": "11",
+                        "loop": {
+                            "enabled": false,
+                            "exitAfterUnit": "m",
+                            "exitAfterValue": 10,
+                            "exitConditionEnabled": false,
+                            "exitLoopAfter": 2,
+                            "pauseUnit": "m",
+                            "pauseValue": 2
+                        },
+                        "parameters": {
+                            "incident_id": "finding:finding_id",
+                            "pairs": [
+                                {
+                                    "name": "Own_Risk_Score",
+                                    "value": "high"
+                                }
+                            ]
+                        },
+                        "requiredParameters": [
+                            {
+                                "data_type": "array",
+                                "field": "pairs"
+                            },
+                            {
+                                "data_type": "string",
+                                "default": "",
+                                "field": "incident_id"
+                            }
+                        ],
+                        "type": "enterpriseSecurity"
+                    },
+                    "errors": {},
+                    "id": "11",
+                    "type": "enterpriseSecurity",
+                    "warnings": {},
+                    "x": 780,
+                    "y": 684.5
                 },
                 "2": {
                     "data": {
@@ -633,7 +694,7 @@
         "schema": "5.0.20",
         "version": "6.4.1.361"
     },
-    "create_time": "2026-01-30T08:15:51.676167+00:00",
+    "create_time": "2026-01-30T08:18:39.003379+00:00",
     "draft_mode": false,
     "labels": [
         "es_soar_integration"
