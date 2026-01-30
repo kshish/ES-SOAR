@@ -14,7 +14,7 @@
                     "targetPort": "2_in"
                 }
             ],
-            "hash": "bd6124306fd223fb066b882fb2aadc540a266dd0",
+            "hash": "21835d0b104534e73513efb14e384f30b3d4f676",
             "nodes": {
                 "0": {
                     "data": {
@@ -74,7 +74,7 @@
                             "pauseValue": 2
                         },
                         "parameters": {
-                            "id": "finding:investigation_id",
+                            "id": "finding:finding_ids",
                             "status": "Closed"
                         },
                         "requiredParameters": [
@@ -89,8 +89,8 @@
                     "id": "2",
                     "type": "enterpriseSecurity",
                     "warnings": {},
-                    "x": 1000,
-                    "y": 624.5
+                    "x": 980,
+                    "y": 620
                 }
             },
             "notes": ""
@@ -103,7 +103,7 @@
         "schema": "5.0.22",
         "version": "7.1.0.99"
     },
-    "create_time": "2026-01-30T16:58:24.573533+00:00",
+    "create_time": "2026-01-30T16:59:41.292255+00:00",
     "draft_mode": false,
     "labels": [
         "es_soar_integration"

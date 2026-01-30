@@ -23,7 +23,7 @@ def update_finding_or_investigation_1(action=None, success=None, container=None,
 
     # phantom.debug('Action: {0} {1}'.format(action['name'], ('SUCCEEDED' if success else 'FAILED')))
 
-    finding_data = phantom.collect2(container=container, datapath=["finding:investigation_id"])
+    finding_data = phantom.collect2(container=container, datapath=["finding:finding_ids"])
 
     parameters = []
 
